@@ -6,7 +6,7 @@ import EcosystemIcon from './icons/IconEcosystem.vue'
 import CommunityIcon from './icons/IconCommunity.vue'
 import SupportIcon from './icons/IconSupport.vue'
 import { JordanHelper } from '@/lib/helpers/jordan.helpers'
-
+import dayjs from 'dayjs';
 const skills = await JordanHelper.getSkills();
 const experience = await JordanHelper.getExperience();
 const education = await JordanHelper.getEducation();
@@ -18,7 +18,7 @@ const education = await JordanHelper.getEducation();
       <DocumentationIcon />
     </template>
     <template #heading>Skills</template>
-  <ul>
+  <ul class="skills">
       <li v-for="({name},index) in skills" :key="index">
         {{name}}
       </li>
@@ -34,7 +34,7 @@ const education = await JordanHelper.getEducation();
 
     <ul>
       <li v-for="({companyName,startDate,endDate,position,location, tasksPerformed},index) in experience" :key="index">
-        <h2>{{companyName}} - {{position}}</h2> {{startDate}}-{{endDate}}
+        <h2>{{companyName}} - {{position}}</h2> {{dayjs(startDate).format("MMM YYYY")}} - {{(endDate) ? dayjs(endDate).format("MMM YYYY") : "Present"}}
         <h3>{{location}}</h3>
         <p>
           <ul>
@@ -58,4 +58,21 @@ const education = await JordanHelper.getEducation();
   </WelcomeItem>
 
 </template>
+
+<style scoped>
+h2 {
+  color: var(--jordan-green)
+}
+.skills{ 
+  color: var(--jordan-vivid-yellow);
+  height: 100px;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
+
+ul{
+  list-style: none;
+}
+</style>
 
