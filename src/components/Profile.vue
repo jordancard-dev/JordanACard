@@ -3,11 +3,11 @@
 
 <template>
   <div class="greetings">
-    <h1 class="green">Welcome to my page!</h1>
-    <h3>
-      This is the page of Jordan Card!
-      This site was constructed with Vue3!
-    </h3>
+    <h1 class="green">Jordan Card</h1>
+    <h2>Full Stack Developer</h2>
+    <p>
+      “It’s not the load that breaks you down, it’s the way you carry it.” — Lena Horne
+    </p>
   </div>
 </template>
 
